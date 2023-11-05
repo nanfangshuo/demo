@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+<h1>Hello, <span th:text="${username}"></span>!</h1>
+<p>
+  <a href="/">返回主页</a>
+  <a href="/calc/sum1?a=1&b=2">求两数之和 (GET请求)</a><br>
+  <a href="/calc/sum12/1/2">求两数之和 (URL Path)</a><br>
+  <a href="/acc?para=10">累计加分</a>
+</p>
+</body>
+</html>
