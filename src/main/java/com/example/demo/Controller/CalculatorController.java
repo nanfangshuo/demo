@@ -1,18 +1,26 @@
 package com.example.demo.Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/calc")
 public class CalculatorController {
+
     @GetMapping("/sum1")
-    public int sumFromParams(@RequestParam int a, @RequestParam int b) {
-        return a + b;
+    public String sumFromParams(@RequestParam int a, @RequestParam int b, Model model) {
+        int sum = a + b;
+        model.addAttribute("result", a + " + " + b + " = " + sum);
+        return "result";
     }
 
     @GetMapping("/sum12/{a}/{b}")
-    public int sumFromPath(@PathVariable int a, @PathVariable int b) {
-        return a + b;
+    public String sumFromPath(@PathVariable int a, @PathVariable int b, Model model) {
+        int sum = a + b;
+        model.addAttribute("result", a + " + " + b + " = " + sum);
+        return "result";
     }
 }
+
 

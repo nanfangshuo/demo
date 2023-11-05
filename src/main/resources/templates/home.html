@@ -5,11 +5,69 @@
 </head>
 <body>
 <h1>Hello, <span th:text="${username}"></span>!</h1>
-<p>
-  <a href="/">返回主页</a>
-  <a href="/calc/sum1?a=1&b=2">求两数之和 (GET请求)</a><br>
-  <a href="/calc/sum12/1/2">求两数之和 (URL Path)</a><br>
-  <a href="/acc?para=10">累计加分</a>
-</p>
+
+<!-- 求两数之和的表单 -->
+<form  id="calcFormGET" action="" method="get">
+  <label for="num1">输入x：</label>
+  <input type="number" name="x" id="num1" required>
+  <br>
+  <label for="num2">输入y：</label>
+  <input type="number" name="y" id="num2" required>
+  <br>
+  <button type="submit">求两数之和(GET请求)</button>
+</form>
+
+<script>
+  document.getElementById("calcFormGET").addEventListener("submit", function (e) {
+    e.preventDefault(); // 阻止表单默认提交行为
+    var num1 = document.getElementById("num1").value;
+    var num2 = document.getElementById("num2").value;
+    var url = "/calc/sum1?a=" + num1 + "&b=" + num2;
+    window.location.href = url; // 跳转到指定URL
+  });
+</script>
+
+<!-- 求两数之和的URL Path 表单 -->
+<form id="calcFormURL" action="" method="get">
+  <label for="num1">输入x：</label>
+  <input type="number" name="x" id="num3" required>
+  <br>
+  <label for="num2">输入y：</label>
+  <input type="number" name="y" id="num4" required>
+  <br>
+  <button type="submit">求两数之和(URL)</button>
+</form>
+
+<script>
+  document.getElementById("calcFormURL").addEventListener("submit", function (e) {
+    e.preventDefault(); // 阻止表单默认提交行为
+    var num3 = document.getElementById("num3").value;
+    var num4 = document.getElementById("num4").value;
+    var url = "/calc/sum12/" + num3 + "/" + num4;
+    window.location.href = url; // 跳转到指定URL
+  });
+</script>
+
+
+
+<!-- 求累计加分的表单 -->
+<form  id="acc" action="" method="get">
+  <label for="score">输入x：</label>
+  <input type="number" name="x" id="score" required>
+  <br>
+  <button type="submit">累计加分</button>
+</form>
+
+<script>
+  document.getElementById("acc").addEventListener("submit", function (e) {
+    e.preventDefault(); // 阻止表单默认提交行为
+    var num = document.getElementById("score").value;
+    var url = "/acc?para=" + num;
+    window.location.href = url; // 跳转到指定URL
+  });
+</script>
+
+<!-- 显示当前累计分数 -->
+<p>当前累计分数: 0</p>
 </body>
 </html>

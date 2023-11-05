@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Accumulator</title>
+</head>
+<body>
+<h1>Accumulator</h1>
+<p>当前累计分数: <span th:text="${totalScore}"></span></p>
+
+<!-- 求累计加分的表单 -->
+<form  id="acc" action="" method="get">
+  <label for="score">输入x：</label>
+  <input type="number" name="x" id="score" required>
+  <br>
+  <button type="submit">累计加分</button>
+</form>
+
+<script>
+  document.getElementById("acc").addEventListener("submit", function (e) {
+    e.preventDefault(); // 阻止表单默认提交行为
+    var num = document.getElementById("score").value;
+    var url = "/acc?para=" + num;
+    window.location.href = url; // 跳转到指定URL
+  });
+</script>
+</body>
+</html>
